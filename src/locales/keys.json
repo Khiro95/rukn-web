@@ -1,0 +1,12 @@
+{
+    "InsertName": "InsertName",
+    "Error_ClipboardNotSupported": "Error_ClipboardNotSupported",
+    "Error_FetchQuranFailed": "Error_FetchQuranFailed",
+    "ArabicReference": "ArabicReference",
+    "ArabicText": "ArabicText",
+    "EnglishReference": "EnglishReference",
+    "EnglishTranslation": "EnglishTranslation",
+    "Error_InvalidImageSize_Title": "Error_InvalidImageSize_Title",
+    "Error_InvalidImageSize_Body": "Error_InvalidImageSize_Body",
+    "Error": "Error"
+}

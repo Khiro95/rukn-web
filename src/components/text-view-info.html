@@ -1,0 +1,19 @@
+<template id="text-view-info-template">
+    <link rel="stylesheet" href="text-view-info.css" type="text/css"/>
+    <span class="tv-header"></span>
+    <div class="tv-checkbox"></div>
+    <svg-icon key="checkmark-outline" class="tv-checkmark"></svg-icon>
+    <div class="tv-content">
+        <svg-icon key="text-box" class="tv-icon"></svg-icon>
+        <span class="tv-size-w"></span>
+        <svg style="grid-area: x;stroke: var(--color-text-disabled)" width="8" height="8">
+            <path d="M0,0 L8,8z M0,8 L8,0z" stroke-width=".5"/>
+        </svg>
+        <span class="tv-size-h"></span>
+        <span class="tv-pos tv-pos-x" data-attr-t data-pos-t="x"></span>
+        <span class="tv-pos tv-pos-y" data-attr-t data-pos-t="y"></span>
+        <button class="tv-btn tv-reset-btn" data-attr-t title-t="ResetPosition">
+            <svg-icon key="reload"></svg-icon>
+        </button>
+    </div>
+</template>

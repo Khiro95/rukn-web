@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html data-attr-t lang-t="lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rukn - رُكن</title>
+    <script type="text/javascript">
+        const lang = document.documentElement.lang;
+        const savedLang = localStorage.getItem('_locale');
+        const navLang = navigator.language.slice(0, 2);
+        if (savedLang !== null && savedLang !== lang) {
+            location.pathname = '/' + savedLang;
+        }
+        else if (savedLang === null && location.pathname === '/' && ['ar', 'en'].includes(navLang)) {
+            location.pathname += navLang;
+        }
+        else {
+            history.replaceState({}, null, lang + location.search);
+            if (lang === 'ar') {
+                document.dir = 'rtl';
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/custom-select.css" type="text/css"> -->
+    <script type="text/javascript" src="static/js/custom-select.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="background-decoration"></div>
+        <div class="decor-wrapper">
+            <div class="foreground-decoration">
+                <div class="foreground-decoration-clip">
+                    <div class="foreground-decoration-pattern"></div>
+                </div>
+            </div>
+            <div class="decor-container">
+                <div class="decor-border"></div>
+            </div>
+            <div class="narration"></div>
+        </div>
+        <div class="wrapper2">
+            <div id="logo-container" class="head-action">
+                <svg viewBox="0 0 2048 640" fill="#f3f4f6">
+                    <use href="assets/logo.svg#logo"/>
+                </svg>
+            </div>
+            <div class="wrapper3">
+                <div class="head-action">
+                    <label for="sura-select" data-t>Surah</label>
+                    <select name="sura-select" id="sura-select"></select>
+                </div>
+                <div class="head-action">
+                    <label for="aya-from-select" data-t>Ayah</label>
+                    <select name="aya-from-select" id="aya-from-select"></select>
+                </div>
+                <div class="head-action">
+                    <input id="isrange-toggle" type="checkbox" style="border: none;"/>
+                    <label for="aya-to-select" style="margin-inline-end: 8px;" data-t>To</label>
+                    <select name="aya-to-select" id="aya-to-select" style="margin-inline-start: 8px;"></select>
+                </div>
+            </div>
+            <div class="head-action" style="flex-wrap: nowrap;">
+                <label for="lang-select">
+                    <svg-icon key="translate"></svg-icon>
+                </label>
+                <select id="lang-select" name="lang-select">
+                    <option value="en" dir="ltr">English</option>
+                    <option value="ar" dir="rtl">العربية</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <aside class="sidebar panel-left">
+            <label for="panel-left-checkbox" class="btn panel-close-btn">
+                <svg-icon key="close"></svg-icon>
+                <span data-t>Close</span>
+            </label>
+            <div class="sidebar-item">
+                <span class="si-header" data-t>Board</span>
+                <div class="si-content">
+                    <div class="board-props">
+                        <span data-t>Background</span>
+                        <input id="board-color" type="color" style="width: 100%;"/>
+                        <span data-t>Size</span>
+                        <div>
+                            <input id="board-width" type="number" min="1" style="width: 50px;"/>
+                            <svg style="grid-area: x;stroke: var(--color-text-disabled)" width="8" height="8">
+                                <path d="M0,0 L8,8z M0,8 L8,0z" stroke-width=".5"/>
+                            </svg>
+                            <input id="board-height" type="number" min="1" style="width: 50px;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <span class="si-header" data-t>Image</span>
+                <div class="si-content">
+                    <input id="image-picker" type="file" accept="image/*" style="display: none;"/>
+                    <img id="image-thumbnail" />
+                    <button id="remove-btn" class="btn btn-danger" style="margin-top: 16px;">
+                        <svg-icon key="trash"></svg-icon>
+                        <span data-t>RemoveImage</span>
+                    </button>
+                    <button id="load-btn" class="btn btn-primary">
+                        <svg-icon key="photo"></svg-icon>
+                        <span data-t>LoadImage</span>
+                    </button>
+                </div>
+            </div>
+            <div class="sidebar-item" id="item-styles">
+                <span class="si-header" id="item-styles-panel-header">ITEM TITLE</span>
+                <div class="si-content">
+                    <div class="text-styles">
+                        <svg-icon key="text-size"></svg-icon>
+                        <select id="font-size">
+                            <option value="16">16 px</option>
+                            <option value="20">20 px</option>
+                            <option value="24">24 px</option>
+                            <option value="32">32 px</option>
+                            <option value="40">40 px</option>
+                            <option value="48">48 px</option>
+                            <option value="56">56 px</option>
+                            <option value="64">64 px</option>
+                            <option value="72">72 px</option>
+                        </select>
+                        <input id="text-color" type="color"/>
+                        <div id="alignment-style" dir="ltr">
+                            <label>
+                                <input type="radio" data-alignment="left" name="test"/>
+                                <svg-icon key="align-left"></svg-icon>
+                            </label>
+                            <label>
+                                <input type="radio" data-alignment="center" name="test"/>
+                                <svg-icon key="align-center"></svg-icon>
+                            </label>
+                            <label>
+                                <input type="radio" data-alignment="right" name="test"/>
+                                <svg-icon key="align-right"></svg-icon>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="aya-text-features">
+                        <hr/>
+                        <label class="switch" id="numbers-switch">
+                            <span data-t>IncludeNumbers</span>
+                            <input type="checkbox"/>
+                        </label>
+                        <label class="switch" id="parentheses-switch">
+                            <span data-t>IncludeParentheses</span>
+                            <input type="checkbox"/>
+                        </label>
+                        <div id="parentheses-props">
+                            <hr/>
+                            <div>
+                                <label class="switch" id="parentheses-spaces">
+                                    <span data-t>IncludeSpaces</span>
+                                    <input type="checkbox"/>
+                                </label>
+                                <label>
+                                    <span data-t>Style</span>
+                                    <select id="parentheses-select"></select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="aya-ref">
+                        <div data-t>Reference</div>
+                        <label>
+                            <span data-t>Mode</span>
+                            <select id="ref-mode-select" style="width: 150px;">
+                                <option value="None" data-t>None</option>
+                                <option value="Inline" data-t>Inline</option>
+                                <option value="NewLine" data-t>NewLine</option>
+                                <option value="Isolated" data-t>Isolated</option>
+                            </select>
+                        </label>
+                        <label class="switch" id="ref-brackets-switch">
+                            <span data-t>IncludeBrackets</span>
+                            <input type="checkbox"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main>
+            <div id="board-wrapper">
+                <!-- <div id="console-log" style="position: absolute;">Mobile console:</div> -->
+                <div id="board"></div>
+            </div>
+        </main>
+        <aside class="sidebar panel-right">
+            <label for="panel-right-checkbox" class="btn panel-close-btn">
+                <svg-icon key="close"></svg-icon>
+                <span data-t>Close</span>
+            </label>
+            <div class="sidebar-item">
+                <span class="si-header" data-t>Texts</span>
+                <div class="si-content">
+                    <div class="text-views-list">
+                        <text-view-info source="arabic-txt" checked></text-view-info>
+                        <text-view-info source="english-txt"></text-view-info>
+                        <text-view-info source="arabic-ref"></text-view-info>
+                        <text-view-info source="english-ref"></text-view-info>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <section class="bottom-section">
+            <label class="panel-opener" for="panel-left-checkbox" title="Settings">
+                <svg-icon key="show-sidebar"></svg-icon>
+                <input type="checkbox" id="panel-left-checkbox">
+            </label>
+            <div>
+                <button id="save-btn" class="btn btn-primary">
+                    <svg-icon key="download"></svg-icon>
+                    <span data-t>Save</span>
+                </button>
+                <button id="copy-btn" class="btn btn-secondary">
+                    <svg-icon key="clipboard"></svg-icon>
+                    <span data-t>Copy</span>
+                </button>
+            </div>
+            <label class="panel-opener" for="panel-right-checkbox" title="Layers">
+                <svg-icon key="layers"></svg-icon>
+                <input type="checkbox" id="panel-right-checkbox">
+            </label>
+        </section>
+    </div>
+    <footer></footer>
+    <div id="overlay"></div>
+    <div id="loading-screen">
+        <svg height="64" viewBox="0 0 2048 640" fill="#28664c">
+            <use href="assets/logo.svg#logo"/>
+        </svg>
+        <span id="loading-screen-text">Loading...</span>
+    </div>
+</body>
+</html>

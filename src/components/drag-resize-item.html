@@ -1,0 +1,20 @@
+<template id="drag-resize-item-template">
+    <link rel="stylesheet" type="text/css" href="./drag-resize-item.css"/>
+    <div class="resz-content">
+        <slot></slot>
+    </div>
+    <div class="resizers">
+        <div class="resizer-edge horizontal top"></div>
+        <div class="resizer-edge vertical right"></div>
+        <div class="resizer-edge horizontal bottom"></div>
+        <div class="resizer-edge vertical left"></div>
+        <div class="resizer top"></div>
+        <div class="resizer top right" style="cursor: nesw-resize"></div>
+        <div class="resizer right"></div>
+        <div class="resizer bottom right" style="cursor: nwse-resize"></div>
+        <div class="resizer bottom"></div>
+        <div class="resizer bottom left" style="cursor: nesw-resize"></div>
+        <div class="resizer left"></div>
+        <div class="resizer top left" style="cursor: nwse-resize"></div>
+    </div>
+</template>

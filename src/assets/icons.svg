@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+    	<symbol id="download" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M13,8 L13,2 L7,2 L7,8 L2,8 L10,16 L18,8 L13,8 Z M0,18 L20,18 L20,20 L0,20 L0,18 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="clipboard" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M12.9728369,2.59456737 C12.7749064,1.12946324 11.5193533,0 10,0 C8.48064666,0 7.2250936,1.12946324 7.02716314,2.59456737 L5,3 L5,4 L3.99406028,4 C2.89451376,4 2,4.8927712 2,5.99406028 L2,18.0059397 C2,19.1054862 2.8927712,20 3.99406028,20 L16.0059397,20 C17.1054862,20 18,19.1072288 18,18.0059397 L18,5.99406028 C18,4.89451376 17.1072288,4 16.0059397,4 L15,4 L15,3 L12.9728369,2.59456737 Z M5,6 L4,6 L4,18 L16,18 L16,6 L15,6 L15,7 L5,7 L5,6 Z M10,4 C10.5522847,4 11,3.55228475 11,3 C11,2.44771525 10.5522847,2 10,2 C9.44771525,2 9,2.44771525 9,3 C9,3.55228475 9.44771525,4 10,4 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="photo" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M11,13 L8,10 L2,16 L11,16 L18,16 L13,11 L11,13 Z M0,3.99406028 C0,2.8927712 0.898212381,2 1.99079514,2 L18.0092049,2 C19.1086907,2 20,2.89451376 20,3.99406028 L20,16.0059397 C20,17.1072288 19.1017876,18 18.0092049,18 L1.99079514,18 C0.891309342,18 0,17.1054862 0,16.0059397 L0,3.99406028 Z M15,9 C16.1045695,9 17,8.1045695 17,7 C17,5.8954305 16.1045695,5 15,5 C13.8954305,5 13,5.8954305 13,7 C13,8.1045695 13.8954305,9 15,9 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="trash" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M2,2 L18,2 L18,4 L2,4 L2,2 Z M8,0 L12,0 L14,2 L6,2 L8,0 Z M3,6 L17,6 L16,20 L4,20 L3,6 Z M8,8 L9,8 L9,18 L8,18 L8,8 Z M11,8 L12,8 L12,18 L11,18 L11,8 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="checkmark" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M0 11l2-2 5 5L18 3l2 2L7 18z"></path>
+			</g>
+    	</symbol>
+		<!-- this one is custom, not part of Zondicons collection -->
+    	<symbol id="checkmark-outline" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM6.7 9.29L9 11.6l4.3-4.3 1.4 1.42L9 14.4l-3.7-3.7 1.4-1.42z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="text-box" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M0,0 L6,0 L6,6 L0,6 L0,0 Z M2,2 L4,2 L4,4 L2,4 L2,2 Z M14,0 L20,0 L20,6 L14,6 L14,0 Z M16,2 L18,2 L18,4 L16,4 L16,2 Z M14,14 L20,14 L20,20 L14,20 L14,14 Z M16,16 L18,16 L18,18 L16,18 L16,16 Z M0,14 L6,14 L6,20 L0,20 L0,14 Z M2,16 L4,16 L4,18 L2,18 L2,16 Z M6,2 L14,2 L14,4 L6,4 L6,2 Z M6,16 L14,16 L14,18 L6,18 L6,16 Z M16,6 L18,6 L18,14 L16,14 L16,6 Z M2,6 L4,6 L4,14 L2,14 L2,6 Z M7,7 L13,7 L13,9 L7,9 L7,7 Z M9,9 L11,9 L11,13 L9,13 L9,9 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="reload" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M14.6568542,15.6568542 C13.209139,17.1045695 11.209139,18 9,18 C4.581722,18 1,14.418278 1,10 C1,5.581722 4.581722,2 9,2 C13.418278,2 17,5.581722 17,10 L15,10 C15,6.6862915 12.3137085,4 9,4 C5.6862915,4 3,6.6862915 3,10 C3,13.3137085 5.6862915,16 9,16 C10.6568542,16 12.1568542,15.3284271 13.2426407,14.2426407 L14.6568542,15.6568542 L14.6568542,15.6568542 Z M12,10 L20,10 L16,14 L12,10 L12,10 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="align-right" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M1,1 L19,1 L19,3 L1,3 L1,1 Z M1,9 L19,9 L19,11 L1,11 L1,9 Z M1,17 L19,17 L19,19 L1,19 L1,17 Z M7,5 L19,5 L19,7 L7,7 L7,5 Z M7,13 L19,13 L19,15 L7,15 L7,13 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="align-left" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M1,1 L19,1 L19,3 L1,3 L1,1 Z M1,9 L19,9 L19,11 L1,11 L1,9 Z M1,17 L19,17 L19,19 L1,19 L1,17 Z M1,5 L13,5 L13,7 L1,7 L1,5 Z M1,13 L13,13 L13,15 L1,15 L1,13 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="align-center" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M1,1 L19,1 L19,3 L1,3 L1,1 Z M1,9 L19,9 L19,11 L1,11 L1,9 Z M1,17 L19,17 L19,19 L1,19 L1,17 Z M4,5 L16,5 L16,7 L4,7 L4,5 Z M4,13 L16,13 L16,15 L4,15 L4,13 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="translate" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M7.41421356,9 L8.29055233,8.12366123 C9.26057586,7.1536377 9.9996249,5.37060807 9.99999986,4 L12,4 L12,2 L7,2 L7,0 L5,0 L5,2 L0,2 L0,4 L7.99999973,4 C7.99956262,4.84020479 7.4713745,6.11441194 6.87633877,6.70944767 L6,7.58578644 L5.12366123,6.70944767 C4.94063656,6.526423 4.76393628,6.27914249 4.6069729,6 L2.40706289,6 L2.40706289,6 C2.71635745,6.81752931 3.17827325,7.59248681 3.70944767,8.12366123 L4.58578644,9 L1.29289322,12.2928932 L2.70710678,13.7071068 L6,10.4142136 L8.81934895,13.2335625 L9.65123928,11.2370257 L7.41421356,9 L7.41421356,9 Z M11.25,17 L10,20 L8,20 L13,8 L14,8 L15,8 L20,20 L18,20 L16.75,17 L11.25,17 L11.25,17 Z M12.0833333,15 L14,10.4 L15.9166667,15 L12.0833333,15 L12.0833333,15 Z"></path>
+			</g>
+    	</symbol>
+    	<symbol id="cheveron-down" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<polygon points="9.29289322 12.9497475 10 13.6568542 15.6568542 8 14.2426407 6.58578644 10 10.8284271 5.75735931 6.58578644 4.34314575 8"></polygon>
+			</g>
+    	</symbol>
+    	<symbol id="close" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<polygon points="10 8.58578644 2.92893219 1.51471863 1.51471863 2.92893219 8.58578644 10 1.51471863 17.0710678 2.92893219 18.4852814 10 11.4142136 17.0710678 18.4852814 18.4852814 17.0710678 11.4142136 10 18.4852814 2.92893219 17.0710678 1.51471863 10 8.58578644"></polygon>
+			</g>
+    	</symbol>
+		<symbol id="show-sidebar" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M7,3 L2,3 L2,17 L7,17 L7,3 Z M9,3 L18,3 L18,17 L9,17 L9,3 Z M0,2.99508929 C0,1.8932319 0.898212381,1 1.99079514,1 L18.0092049,1 C19.1086907,1 20,1.8926228 20,2.99508929 L20,17.0049107 C20,18.1067681 19.1017876,19 18.0092049,19 L1.99079514,19 C0.891309342,19 0,18.1073772 0,17.0049107 L0,2.99508929 Z M3,4 L6,4 L6,6 L3,6 L3,4 Z M3,7 L6,7 L6,9 L3,9 L3,7 Z M3,10 L6,10 L6,12 L3,12 L3,10 Z"></path>
+			</g>
+    	</symbol>
+		<symbol id="layers" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M10,1 L20,7 L10,13 L0,7 L10,1 Z M16.6666667,11 L20,13 L10,19 L0,13 L3.33333333,11 L10,15 L16.6666667,11 Z"></path>
+			</g>
+    	</symbol>
+		<symbol id="text-size" viewBox="0 0 20 20">
+    	    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+				<path d="M16,9 L20,9 L20,7 L10,7 L10,9 L14,9 L14,17 L16,17 L16,9 Z M8,5 L15,5 L15,3 L0,3 L0,5 L6,5 L6,17 L8,17 L8,5 Z"></path>
+			</g>
+    	</symbol>
+	</defs>
+</svg>

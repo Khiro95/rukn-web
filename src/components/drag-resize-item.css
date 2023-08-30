@@ -1,0 +1,134 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+:host {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: grid;
+    grid-template-areas: 'cell';
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    cursor: all-scroll;
+}
+:host(:focus) {
+    outline: none;
+}
+:host > * {
+    grid-area: cell;
+}
+:host([resize-horizontally-only]) {
+    height: auto !important;
+}
+:host > .resz-content {
+    word-wrap: break-word;
+}
+
+.resizers {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-areas: 'item';
+    justify-items: center;
+    align-items: center;
+    visibility: hidden;
+    direction: ltr;
+
+    --resizer-even-size: 4px;
+    --resizer-size: calc(var(--resizer-even-size) + 1px);
+    --resizer-offset: calc(var(--resizer-even-size) / -2);
+}
+.resizers::before {
+    content: '';
+    --c1: #00f;
+    --c2: #fff;
+    --s: 5px;
+    background: conic-gradient(
+        from 0 at var(--s) var(--s),
+        transparent 0 75%,
+        var(--c1) 75% 100%) 0 0 / calc(100% - var(--s)) calc(100% - var(--s)),
+    repeating-conic-gradient(
+        var(--c1) 0 25%,
+        var(--c2) 25% 50%
+    ) 2.5px 2.5px / 10px 10px round;
+    padding: 1px;
+    -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+:host([resize-horizontally-only]) .resizers > :is(.top, .bottom) {
+    display: none;
+}
+
+:host([selected]) {
+    z-index: 1;
+}
+
+:host([selected]) .resizers {
+    visibility: visible;
+}
+
+:host(:not([selected]):hover) .resizers {
+    opacity: 0.4;
+    visibility: visible;
+}
+
+.resizers .resizer{
+    width: var(--resizer-size);
+    height: var(--resizer-size);
+    background: white;
+    border: 1px solid blue;
+    margin: var(--resizer-offset);
+    grid-area: item;
+}
+
+.resizers .top {
+    align-self: start;
+    cursor: ns-resize;
+}
+
+.resizers .right {
+    justify-self: end;
+    cursor: ew-resize;
+}
+
+.resizers .bottom {
+    align-self: end;
+    cursor: ns-resize;
+}
+
+.resizers .left {
+    justify-self: start;
+    cursor: ew-resize;
+}
+
+.resizers .resizer-edge {
+    grid-area: item;
+}
+
+.resizers .resizer-edge.horizontal {
+    height: var(--resizer-size);
+    justify-self: stretch;
+    margin: var(--resizer-offset) 0;
+    cursor: ns-resize;
+}
+
+.resizers .resizer-edge.vertical {
+    width: var(--resizer-size);
+    align-self: stretch;
+    margin: 0 var(--resizer-offset);
+    cursor: ew-resize;
+}
+
+@media only screen and (pointer: coarse) {
+    .resizers {
+        --resizer-even-size: 16px;
+    }
+}
