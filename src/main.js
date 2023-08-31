@@ -15,7 +15,10 @@ const appContext = AppContext.default;
 document.addEventListener("DOMContentLoaded", async function() {
     const langSelect = document.getElementById('lang-select');
     langSelect.value = document.documentElement.lang;
-    langSelect.addEventListener('change', e => L11n.setLocale(e.target.value));
+    langSelect.addEventListener('change', e => {
+        sessionStorage.setItem('_appContext', JSON.stringify(appContext.dumpContext()));
+        L11n.setLocale(e.target.value);
+    });
 
     // load Quran data from .xml file
     try {
@@ -26,6 +29,12 @@ document.addEventListener("DOMContentLoaded", async function() {
         let rawXml = await response.text();
         const xmlDoc = new DOMParser().parseFromString(rawXml, 'text/xml');
         appContext.ayaSelector.init(xmlDoc);
+
+        const _previousContext = sessionStorage.getItem('_appContext');
+        if (_previousContext) {
+            sessionStorage.removeItem('_appContext');
+            appContext.loadContext(JSON.parse(_previousContext));
+        }
     }
     catch (err) {
         const msg = L11n.getString(L11n.Keys.Error_FetchQuranFailed, err.message);

@@ -313,6 +313,48 @@ class AppContext {
             }
         }
     }
+
+    dumpContext() {
+        return {
+            selector: {
+                sura: this.ayaSelector.sura,
+                start: this.ayaSelector.ayaStart,
+                end: this.ayaSelector.ayaEnd,
+                isRange: this.ayaSelector.isRange,
+            },
+            board: {
+                width: this.board.width,
+                height: this.board.height,
+                background: this.board.background,
+            },
+            items: this.items.map(i => i.dump()),
+        };
+    }
+
+    loadContext(context) {
+        if (context) {
+            if (context.selector) {
+                this.ayaSelector.loadState(context.selector);
+            }
+            if (context.board) {
+                this.board.width = context.board.width;
+                this.board.height = context.board.height;
+                this.board.background = context.board.background;
+            }
+            if (Array.isArray(context.items)) {
+                context.items.forEach(ci => {
+                    const item = this.items.find(i => i.id === ci.id);
+                    item.reloadConfig(ci);
+                    item.updateText();
+                    if (!item.isReference && document.contains(item.element) !== ci.visible) {
+                        document.querySelector(`text-view-info[source="${ci.id}"]`).click();
+                    }
+                });
+                // In case ref text was updated AFTER verse text
+                this.items.filter(i => !i.isReference).forEach(i => i.updateText());
+            }
+        }
+    }
 }
 
 class AyaSelector extends EventTarget {
@@ -456,12 +498,26 @@ class AyaSelector extends EventTarget {
             this.suraSelector.dispatchEvent(new Event('change'));
         }
     }
+
+    loadState(state) {
+        if (state) {
+            this.isRangeToggle.checked = state.isRange;
+            this.isRangeToggle.dispatchEvent(new Event('change'));
+            this.suraSelector.value = state.sura;
+            this.suraSelector.dispatchEvent(new Event('change'));
+            this.ayaFromSelector.value = state.start;
+            this.ayaFromSelector.dispatchEvent(new Event('change'));
+            this.ayaToSelector.value = state.end;
+            this.ayaToSelector.dispatchEvent(new Event('change'));
+        }
+    }
 }
 
 class ItemContext extends EventTarget {
     constructor(id, name, ayaSelector, isArabic = true) {
         super();
 
+        this.id = id;
         this.name = name;
         this.isArabic = isArabic;
         this.element = new DragResizeItem();
@@ -484,13 +540,7 @@ class ItemContext extends EventTarget {
     }
 
     get rect() {
-        const { width, height } = this.element.getBoundingClientRect();
-        return {
-            x: this.element.offsetLeft,
-            y: this.element.offsetTop,
-            width,
-            height
-        }
+        return this.element.getRect();
     }
 
     get isReference() {
@@ -554,6 +604,27 @@ class ItemContext extends EventTarget {
     updateText() {
         this.element.innerHTML = this.data.ayat.map(a => this.isArabic ? a.text : a.englishText).join('0');
     }
+
+    dump() {
+        return {
+            id: this.id,
+            textColor: this.textColor,
+            fontSize: this.fontSize,
+            alignment: this.alignment,
+            visible: document.contains(this.element),
+            rect: this.rect,
+        };
+    }
+
+    reloadConfig(config) {
+        if (config) {
+            this.textColor = config.textColor;
+            this.fontSize = config.fontSize;
+            this.alignment = config.alignment;
+            this.element.setPosition(config.rect);
+            this.element.setSize(config.rect);
+        }
+    }
 }
 
 class ArabicAyaItem extends ItemContext {
@@ -602,6 +673,25 @@ class ArabicAyaItem extends ItemContext {
         }
         this.element.innerText = parts.join('');
     }
+
+    dump() {
+        const _dump = super.dump();
+        _dump.includeNumbers = this.includeNumbers;
+        _dump.includeParentheses = this.includeParentheses;
+        _dump.includeSpaces = this.includeSpaces;
+        _dump.parentheses = this.parentheses;
+        return _dump;
+    }
+
+    reloadConfig(config) {
+        if (config) {
+            super.reloadConfig(config);
+            this.includeNumbers = config.includeNumbers;
+            this.includeParentheses = config.includeParentheses;
+            this.includeSpaces = config.includeSpaces;
+            this.parentheses = config.parentheses;
+        }
+    }
 }
 
 class EnglishTranslationItem extends ItemContext {
@@ -635,6 +725,19 @@ class EnglishTranslationItem extends ItemContext {
             }
         }
         this.element.innerText = parts.join('');
+    }
+
+    dump() {
+        const _dump = super.dump();
+        _dump.includeNumbers = this.includeNumbers;
+        return _dump;
+    }
+
+    reloadConfig(config) {
+        if (config) {
+            super.reloadConfig(config);
+            this.includeNumbers = config.includeNumbers;
+        }
     }
 }
 
@@ -689,6 +792,21 @@ class AyaReferenceItem extends ItemContext {
             parts.push(']');
         }
         this.element.innerText = parts.join('');
+    }
+
+    dump() {
+        const _dump = super.dump();
+        _dump.mode = this.mode;
+        _dump.includeBrackets = this.includeBrackets;
+        return _dump;
+    }
+
+    reloadConfig(config) {
+        if (config) {
+            super.reloadConfig(config);
+            this.mode = config.mode;
+            this.includeBrackets = config.includeBrackets;
+        }
     }
 }
 

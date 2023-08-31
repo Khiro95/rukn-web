@@ -18,7 +18,7 @@ module.exports = {
     main: './src/main.js',
   },
   output: {
-    filename: 'js/[name].js',
+    filename: `js/[name]${isDev ? '' : '.[contenthash]'}.js`,
     path: path.resolve(__dirname, 'dist'),
     publicPath: _publicPath,
     clean: true,
@@ -105,7 +105,15 @@ module.exports = {
               publicPath: _publicPath
             }
           },
-          'css-loader'
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [ 'autoprefixer' ]
+              }
+            }
+          }
         ]
       },
       {
@@ -114,6 +122,14 @@ module.exports = {
         type: 'asset/resource',
         generator: {
           filename: `css/[name]${isDev ? '' : '.[contenthash]'}.css`
+        },
+        use: {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              plugins: [ 'autoprefixer' ]
+            }
+          }
         }
       },
       {

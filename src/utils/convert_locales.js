@@ -2,7 +2,19 @@ const fs = require('fs');
 const path = require('path');
 const { XMLParser } = require('fast-xml-parser');
 
-const files = fs.readdirSync(__dirname);
+const resourcesPath = path.resolve(process.cwd(), process.argv[2] || 'src/locales_res');
+const outputPath = path.resolve(process.cwd(), process.argv[3] || 'locales');
+
+const files = fs.readdirSync(resourcesPath).filter(file => /^Resources(\.[a-z]{2})*\.resx$/.test(file));
+
+if (files.length === 0) {
+    console.log('There were no locales resources to convert in\n' + resourcesPath);
+    return;
+}
+
+if (!fs.existsSync(outputPath)) {
+    fs.mkdirSync(outputPath);
+}
 
 const locMap = new Map();
 locMap.set('en', {
@@ -32,8 +44,10 @@ locMap.set('ar', {
 
 for (const file of files) {
     if (/^Resources(\.[a-z]{2})*\.resx$/.test(file)) {
+        console.log("Converting " + file + '...');
+
         const lang = file.replace('Resources', '').replace('.resx', '').replace('.', '') || 'en';
-        const data = fs.readFileSync(path.join(__dirname, file,), 'utf-8');
+        const data = fs.readFileSync(path.join(resourcesPath, file,), 'utf-8');
         
         const options = {
             ignoreAttributes: false,
@@ -52,9 +66,9 @@ for (const file of files) {
             }
         }
 
-        fs.writeFileSync(path.join(__dirname, lang + '.json'), JSON.stringify(locObj, null, 4));
+        fs.writeFileSync(path.join(outputPath, lang + '.json'), JSON.stringify(locObj, null, 4));
     }
 }
 
 const keysObj = Object.entries(locMap.get('ar').runtime_resource).reduce((k, [key, value]) => { k[key] = key; return k; }, {})
-fs.writeFileSync(path.join(__dirname, 'keys.json'), JSON.stringify(keysObj, null, 4));
+fs.writeFileSync(path.join(outputPath, 'keys.json'), JSON.stringify(keysObj, null, 4));

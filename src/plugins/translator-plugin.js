@@ -12,11 +12,11 @@ const defaultOptions = {
   i18nOptions: {
     locale: 'en',
     locales: ['en'],
-    localesPath: 'src/locales',
+    localesPath: 'locales',
   }
 }
 
-class TranslatorPlugin {
+module.exports = class TranslatorPlugin {
   constructor(options) {
     this.options = Object.assign({}, defaultOptions, options);
     this.options.i18nOptions = Object.assign({}, defaultOptions.i18nOptions, options.i18nOptions);
@@ -35,8 +35,6 @@ class TranslatorPlugin {
     }
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
-      console.log('The compiler is starting a new compilation...')
-
       HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
         PLUGIN_NAME, // <-- Set a meaningful name here for stacktraces
         (data, cb) => {
@@ -61,5 +59,3 @@ class TranslatorPlugin {
     });
   }
 }
-
-module.exports = TranslatorPlugin

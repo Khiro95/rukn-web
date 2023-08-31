@@ -134,32 +134,32 @@ header > *, .decor-wrapper * {
     height: 30px;
     bottom: -8px;
     background-color: #ebd99e;
-    -webkit-mask-image: url('../assets/hafs-an-asim.svg');
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: auto 100%;
-    -webkit-mask-position: center;
+    mask-image: url('../assets/hafs-an-asim.svg');
+    mask-repeat: no-repeat;
+    mask-size: auto 100%;
+    mask-position: center;
 }
 .background-decoration {
     height: 100%;
     width: 100%;
     background-color: #ffffff09;
-    -webkit-mask-image: url('../assets/pattern.svg');
-    -webkit-mask-repeat: repeat;
-    -webkit-mask-size: 32px 32px;
+    mask-image: url('../assets/pattern.svg');
+    mask-repeat: repeat;
+    mask-size: 32px 32px;
 }
 .foreground-decoration {
-    -webkit-mask-image: linear-gradient(90deg, black 0%, #000000aa 30%, #000000da 50%, #000000aa 70%, black 100%);
+    mask-image: linear-gradient(90deg, black 0%, #000000aa 30%, #000000da 50%, #000000aa 70%, black 100%);
 }
 .foreground-decoration-clip {
-    -webkit-mask-image: url('../assets/clip.svg');
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: 100% 100%;
+    mask-image: url('../assets/clip.svg');
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
 }
 .foreground-decoration-pattern {
     background-color: #ecd380;
-    -webkit-mask-image: url('../assets/pattern.svg');
-    -webkit-mask-repeat: repeat;
-    -webkit-mask-size: 32px 32px;
+    mask-image: url('../assets/pattern.svg');
+    mask-repeat: repeat;
+    mask-size: 32px 32px;
 }
 .decor-container {
     height: 72px;
@@ -170,9 +170,9 @@ header > *, .decor-wrapper * {
 .decor-border {
     height: 100%;
     background: linear-gradient(90deg, #b69154 0%, #ecd380 50%, #b69154 100%);
-    -webkit-mask-image: url('../assets/decoborder.svg');
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: 100% 100%;
+    mask-image: url('../assets/decoborder.svg');
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
 }
 .wrapper2 {
     width: auto;
@@ -645,18 +645,20 @@ input[type="checkbox"]:checked::before {
         z-index: 10;
         top: 0;
     }
-    .panel-left {
+    html:not([dir=rtl]) .panel-left, html[dir=rtl] .panel-right {
         left: -100%;
         transition: left .3s;
     }
-    .panel-right {
+    html:not([dir=rtl]) .panel-right, html[dir=rtl] .panel-left  {
         right: -100%;
         transition: right .3s;
     }
-    .container:has(#panel-left-checkbox:checked) .panel-left {
+    html:not([dir=rtl]):has(#panel-left-checkbox:checked) .panel-left,
+    html[dir=rtl]:has(#panel-right-checkbox:checked) .panel-right {
         left: 0;
     }
-    .container:has(#panel-right-checkbox:checked) .panel-right {
+    html:not([dir=rtl]):has(#panel-right-checkbox:checked) .panel-right,
+    html[dir=rtl]:has(#panel-left-checkbox:checked) .panel-left {
         right: 0;
     }
     body:has(#panel-right-checkbox:checked, #panel-left-checkbox:checked) #overlay {
@@ -690,7 +692,7 @@ input[type="checkbox"]:checked::before {
 }
 @media screen and (width <= 565px) {
     .narration {
-        -webkit-mask-size: auto 24px;
+        mask-size: auto 24px;
         bottom: -5px;
     }
     .head-action {

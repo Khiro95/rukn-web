@@ -1,6 +1,6 @@
-import arData from '../locales/ar.json';
-import enData from '../locales/en.json';
-import Keys from '../locales/keys.json';
+import arData from '../../locales/ar.json';
+import enData from '../../locales/en.json';
+import Keys from '../../locales/keys.json';
 
 const localeData = {
     ar: arData.runtime_resource,

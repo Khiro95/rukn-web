@@ -42,6 +42,10 @@ class DragResizeItem extends HTMLElement {
         this.dispatchEvent(new Event('selectionChanged'))
     }
 
+    get minSize() {
+        return 20;
+    }
+
     connectedCallback() {
         let original_x = 0;
         let original_y = 0;
@@ -120,7 +124,7 @@ class DragResizeItem extends HTMLElement {
         });
 
         const resizers = this.shadowRoot.querySelectorAll('.resizer,.resizer-edge')
-        const minimum_size = 20;
+        const minimum_size = this.minSize;
         let original_width = 0;
         let original_height = 0;
         const resizeFunc = resize.bind(this);
@@ -255,17 +259,35 @@ class DragResizeItem extends HTMLElement {
         }
     }
 
-    dispatchChangeEvent() {
-        const { width, height } = this.getBoundingClientRect();
-        const args = {
-            detail: {
-                x: this.offsetLeft,
-                y: this.offsetTop,
-                width,
-                height
+    setSize(size = { width: 0, height: 0 }) {
+        if (size) {
+            let changed = false;
+            if (typeof size.width === 'number' && size.width > 0) {
+                this.style.width = (size.width < this.minSize ? this.minSize : size.width) + 'px';
+                changed = true;
+            }
+            if (typeof size.height === 'number' && size.height > 0) {
+                this.style.height = (size.height < this.minSize ? this.minSize : size.height) + 'px';
+                changed = true;
+            }
+            if (changed) {
+                this.dispatchChangeEvent();
             }
         }
-        const ev = new CustomEvent('change', args);
+    }
+
+    getRect() {
+        const { width, height } = this.getBoundingClientRect();
+        return {
+            x: this.offsetLeft,
+            y: this.offsetTop,
+            width,
+            height
+        };
+    }
+
+    dispatchChangeEvent() {
+        const ev = new CustomEvent('change', { detail: this.getRect() });
         this.dispatchEvent(ev);
     }
 }
