@@ -20,6 +20,25 @@ document.addEventListener("DOMContentLoaded", async function() {
         L11n.setLocale(e.target.value);
     });
 
+    const panelLeftToggle = document.getElementById('panel-left-checkbox');
+    const panelRightToggle = document.getElementById('panel-right-checkbox');
+    panelLeftToggle.addEventListener('change', e => {
+        const prop = L11n.currentLocale === 'ar' ? 'right' : 'left';
+        document.querySelector('.panel-left').style[prop] = e.target.checked ? 0 : null;
+        document.getElementById('overlay').classList.toggle('open', e.target.checked);
+    });
+    panelRightToggle.addEventListener('change', e => {
+        const prop = L11n.currentLocale === 'ar' ? 'left' : 'right';
+        document.querySelector('.panel-right').style[prop] = e.target.checked ? 0 : null;
+        document.getElementById('overlay').classList.toggle('open', e.target.checked);
+    });
+    document.getElementById('overlay').addEventListener('click', () => {
+        panelLeftToggle.checked = false;
+        panelLeftToggle.dispatchEvent(new Event('change'));
+        panelRightToggle.checked = false;
+        panelRightToggle.dispatchEvent(new Event('change'));
+    })
+
     // load Quran data from .xml file
     try {
         let response = await fetch(Quran);
@@ -46,6 +65,12 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     document.getElementById('loading-screen').style.display = 'none';
-    customSelect('select:not(#font-size)');
-    customSelect('select#font-size', { isEditable: true });
+    const customSelects = 
+        customSelect('select:not(#font-size)')
+        .concat(customSelect('select#font-size', { isEditable: true }));
+    for (let cstSelect of customSelects) {
+        if (cstSelect.select.id) {
+            cstSelect.container.dataset.sid = cstSelect.select.id;
+        }
+    }
 });

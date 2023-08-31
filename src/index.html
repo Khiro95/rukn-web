@@ -111,7 +111,7 @@
                     </button>
                 </div>
             </div>
-            <div class="sidebar-item" id="item-styles">
+            <div class="sidebar-item hidden" id="item-styles">
                 <span class="si-header" id="item-styles-panel-header">ITEM TITLE</span>
                 <div class="si-content">
                     <div class="text-styles">
@@ -153,7 +153,7 @@
                             <span data-t>IncludeParentheses</span>
                             <input type="checkbox"/>
                         </label>
-                        <div id="parentheses-props">
+                        <div id="parentheses-props" class="hidden">
                             <hr/>
                             <div>
                                 <label class="switch" id="parentheses-spaces">
@@ -178,7 +178,7 @@
                                 <option value="Isolated" data-t>Isolated</option>
                             </select>
                         </label>
-                        <label class="switch" id="ref-brackets-switch">
+                        <label class="switch hidden" id="ref-brackets-switch">
                             <span data-t>IncludeBrackets</span>
                             <input type="checkbox"/>
                         </label>
@@ -236,7 +236,7 @@
         <svg height="64" viewBox="0 0 2048 640" fill="#28664c">
             <use href="assets/logo.svg#logo"/>
         </svg>
-        <span id="loading-screen-text">Loading...</span>
+        <span id="loading-screen-text"><span data-t>Loading</span>...</span>
     </div>
 </body>
 </html>

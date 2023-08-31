@@ -138,6 +138,7 @@ class AppContext {
             if (item instanceof ArabicAyaItem) {
                 item.includeParentheses = e.target.checked;
                 item.updateText();
+                document.getElementById('parentheses-props').classList.toggle('hidden', !e.target.checked);
             }
         });
         this.parenthesesSpacesSwitch.querySelector('input').addEventListener('change', e => {
@@ -166,6 +167,7 @@ class AppContext {
                 item.reference.mode = e.target.value;
                 item.updateText();
             }
+            document.getElementById('ref-brackets-switch').classList.toggle('hidden', e.target.value === 'None');
         });
         this.refBracketsSwitch.querySelector('input').addEventListener('change', e => {
             let item = this.selectedItem;
@@ -207,6 +209,7 @@ class AppContext {
         this.items.forEach(item => item.element.selected = item == selectedItem);
         
         if (selectedItem && this.items.includes(selectedItem)) {
+            document.getElementById('item-styles').classList.remove('hidden');
             document.getElementById('item-styles-panel-header').innerText = selectedItem.name;
             this.textColorInput.value = selectedItem.textColor;
             this.fontSizeInput.value = selectedItem.fontSize;
@@ -220,6 +223,8 @@ class AppContext {
                 if (selectedItem instanceof ArabicAyaItem) {
                     this.parenthesesSwitch.removeAttribute('hidden');
                     this.parenthesesSwitch.querySelector('input').checked = selectedItem.includeParentheses;
+
+                    document.getElementById('parentheses-props').classList.toggle('hidden', !selectedItem.includeParentheses);
                     
                     this.parenthesesSpacesSwitch.querySelector('input').checked = selectedItem.includeSpaces;
                     
@@ -227,6 +232,7 @@ class AppContext {
                 }
                 else {
                     this.parenthesesSwitch.setAttribute('hidden', '');
+                    document.getElementById('parentheses-props').classList.add('hidden');
                 }
 
                 this.refModeSelector.value = selectedItem.reference.mode;
@@ -238,8 +244,12 @@ class AppContext {
                 if (selectedItem instanceof AyaReferenceItem) {
                     this.refModeSelector.value = selectedItem.mode;
                     this.refBracketsSwitch.querySelector('input').checked = selectedItem.includeBrackets;
+                    document.getElementById('ref-brackets-switch').classList.toggle('hidden', selectedItem.mode === 'None');
                 }
             }
+        }
+        else {
+            document.getElementById('item-styles').classList.add('hidden');
         }
     }
 

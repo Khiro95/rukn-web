@@ -59,6 +59,9 @@ input, button, select {
     margin: 0;
     padding: 0;
 }
+.hidden {
+    display: none !important;
+}
 .btn {
     border-radius: 5px;
     border: 1px solid transparent;
@@ -343,12 +346,13 @@ svg-icon > svg {
     box-sizing: content-box;
     overflow: hidden;
 }
-#sura-select, .customSelect:has(#sura-select) {
+#sura-select, .customSelect[data-sid=sura-select] {
     min-width: 160px;
 }
 #aya-from-select,
 #aya-to-select,
-.customSelect:has(#aya-from-select, #aya-to-select) {
+.customSelect[data-sid=aya-from-select],
+.customSelect[data-sid=aya-to-select] {
     min-width: 82px;
 }
 #isrange-toggle:not(:checked) ~ :not(label) {
@@ -472,9 +476,6 @@ html[dir="rtl"] .switch input[type="checkbox"]::before {
     transform: translateX(var(--switch-thumb-translate-amount));
 }
 
-#parentheses-switch:has(input:not(:checked)) + #parentheses-props {
-    display: none;
-}
 #parentheses-props {
     display: flex;
 }
@@ -493,12 +494,6 @@ html[dir="rtl"] .switch input[type="checkbox"]::before {
     font-family: 'hafs-tight';
     font-size: 24px;
     line-height: 1.085;
-}
-#item-styles {
-    display: none;
-}
-.container:has(drag-resize[selected]) #item-styles {
-    display: block;
 }
 #parentheses-select, #parentheses-select > option {
     font-family: 'hafs';
@@ -519,9 +514,6 @@ html[dir="rtl"] .switch input[type="checkbox"]::before {
     flex-grow: 1;
     height: 1px;
     background-color: var(--control-border);
-}
-#aya-ref:has(option[value="None"]:checked) #ref-brackets-switch {
-    display: none;
 }
 #image-thumbnail {
     display: block;
@@ -632,7 +624,8 @@ input[type="checkbox"]:checked::before {
     }
     #aya-from-select,
     #aya-to-select,
-    .customSelect:has(#aya-from-select, #aya-to-select) {
+    .customSelect[data-sid=aya-from-select],
+    .customSelect[data-sid=aya-to-select] {
         min-width: 52px;
     }
     #logo-container > svg {
@@ -653,15 +646,7 @@ input[type="checkbox"]:checked::before {
         right: -100%;
         transition: right .3s;
     }
-    html:not([dir=rtl]):has(#panel-left-checkbox:checked) .panel-left,
-    html[dir=rtl]:has(#panel-right-checkbox:checked) .panel-right {
-        left: 0;
-    }
-    html:not([dir=rtl]):has(#panel-right-checkbox:checked) .panel-right,
-    html[dir=rtl]:has(#panel-left-checkbox:checked) .panel-left {
-        right: 0;
-    }
-    body:has(#panel-right-checkbox:checked, #panel-left-checkbox:checked) #overlay {
+    #overlay.open {
         height: 100%;
         width: 100%;
         opacity: 1;
