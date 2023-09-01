@@ -39,7 +39,7 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight = null) {
     for (let line of lines) {
         const wrapped = wrapLine(ctx, line, x, y, maxWidth, lineHeight, verticalOffset);
         result.push(...wrapped);
-        y += lineHeight;
+        y += lineHeight * wrapped.length;
     }
     return result;
 }
