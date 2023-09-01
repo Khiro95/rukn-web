@@ -229,6 +229,7 @@ class AppContext {
                     this.parenthesesSpacesSwitch.querySelector('input').checked = selectedItem.includeSpaces;
                     
                     this.parenthesesSelector.value = selectedItem.parentheses;
+                    this.parenthesesSelector.dispatchEvent(new Event('change'));
                 }
                 else {
                     this.parenthesesSwitch.setAttribute('hidden', '');
