@@ -266,6 +266,7 @@ class AppContext {
                 width: this.board.width,
                 height: this.board.height,
                 background: this.board.background,
+                image: this.board.image,
             },
             items: this.items.map(i => i.dump()),
         };
@@ -280,6 +281,13 @@ class AppContext {
                 this.board.width = context.board.width;
                 this.board.height = context.board.height;
                 this.board.background = context.board.background;
+                if (context.board.image?.startsWith('data:')) {
+                    this.board.image = {
+                        src: context.board.image,
+                        width: context.board.width,
+                        height: context.board.height
+                    };
+                }
             }
             if (Array.isArray(context.items)) {
                 context.items.forEach(ci => {
@@ -771,24 +779,27 @@ class BoardContext {
             this.imagePicker.value = null;
             this.image = null;
         });
-        this.imagePicker.addEventListener('change', e => {
+        this.imagePicker.addEventListener('change', async e => {
             if (e.target.files.length === 1) {
-                const src = URL.createObjectURL(e.target.files[0]);
+                let b64 = await new Promise(resolve => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.readAsDataURL(e.target.files[0]);
+                });
                 const temp = new Image();
-                temp.onload = () => {
-                    if (temp.width < this.minWidth || temp.height < this.minHeight) {
-                        this.imagePicker.value = null;
-                        alert(L11n.getString(L11n.Keys.Error_InvalidImageSize_Body, this.minWidth, this.minHeight));
-                    }
-                    else {
-                        this.image = {
-                            src: src,
-                            width: temp.width,
-                            height: temp.height
-                        };
-                    }
-                };
-                temp.src = src;
+                temp.src = b64;
+                await temp.decode();
+                if (temp.width < this.minWidth || temp.height < this.minHeight) {
+                    this.imagePicker.value = null;
+                    alert(L11n.getString(L11n.Keys.Error_InvalidImageSize_Body, this.minWidth, this.minHeight));
+                }
+                else {
+                    this.image = {
+                        src: b64,
+                        width: temp.width,
+                        height: temp.height
+                    };
+                }
             }
         });
         this.colorInput.addEventListener('input', e => {

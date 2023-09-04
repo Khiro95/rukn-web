@@ -14,9 +14,24 @@ const appContext = AppContext.default;
 
 document.addEventListener("DOMContentLoaded", async function() {
     const langSelect = document.getElementById('lang-select');
-    langSelect.value = document.documentElement.lang;
+    langSelect.value = L11n.currentLocale;
     langSelect.addEventListener('change', e => {
-        sessionStorage.setItem('_appContext', JSON.stringify(appContext.dumpContext()));
+        if (e.target.value === L11n.currentLocale) {
+            return;
+        }
+
+        const ctx = appContext.dumpContext();
+
+        // sessionStorage max limit is 5MB so we should decide whether to drop image
+        if (ctx.board.image?.length > 4.5 * 1024 * 1024) {
+            if (!confirm(L11n.getString(L11n.Keys.Error_CannotPreserveImage))) {
+                langSelect.value = L11n.currentLocale;
+                langSelect.dispatchEvent('change');
+                return;
+            }
+            ctx.board.image = null;
+        }
+        sessionStorage.setItem('_appContext', JSON.stringify(ctx));
         L11n.setLocale(e.target.value);
     });
 

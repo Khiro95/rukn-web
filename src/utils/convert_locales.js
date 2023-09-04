@@ -29,6 +29,7 @@ locMap.set('en', {
         InsertName: 'Enter a file name. (Leave it empty for random name)',
         Error_ClipboardNotSupported: 'This browser doesn\'t support copying data to the clipboard.',
         Error_FetchQuranFailed: 'Could not fetch Quran data: {0}',
+        Error_CannotPreserveImage: 'Image is very big and cannot be preserved. Would you like to continue without the image?',
     }
 });
 locMap.set('ar', {
@@ -43,6 +44,7 @@ locMap.set('ar', {
         InsertName: 'قم بإدخال اسم للملف. (اتركه فارغا للحصول على اسم عشوائي)',
         Error_ClipboardNotSupported: 'هذا المتصفح لا يدعم نسخ البيانات إلى الحافظة.',
         Error_FetchQuranFailed: 'لم يتم احضار بيانات القرآن: {0}',
+        Error_CannotPreserveImage: 'الصورة كبيرة جدا ولا يمكن الحفاظ عليها. هل تريد المتابعة بدون الصورة؟',
     }
 });
 
