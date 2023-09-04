@@ -30,7 +30,9 @@ class TextViewInfo extends HTMLElement {
             this.removeAttribute('checked');
             try {
                 appContext.board.element.removeChild(this.sourceItem.element);
-                this.sourceItem.element.selected = false;
+                if (this.sourceItem.element.selected) {
+                    appContext.selectedItem = null;
+                }
                 if (!this.sourceItem.isReference) {
                     this.sourceItem.reference.mode = 'None';
                 }

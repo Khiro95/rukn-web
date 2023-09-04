@@ -15,7 +15,7 @@ function colorToHex(rgb) {
         .join('');
 }
 
-//https://fjolt.com/article/html-canvas-how-to-wrap-text
+// Based on: https://fjolt.com/article/html-canvas-how-to-wrap-text
 // @description: wrapText wraps HTML canvas text onto a canvas of fixed width
 // @param ctx - the context for the canvas we want to wrap text on
 // @param text - the text we want to wrap.
