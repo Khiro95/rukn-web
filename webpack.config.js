@@ -138,6 +138,19 @@ module.exports = {
           {
             loader: "html-loader",
             options: {
+              sources: {
+                list: [
+                  "...",
+                  {
+                    tag: "meta",
+                    attribute: "content",
+                    type: "src",
+                    filter: (tag, attribute, attributes, resourcePath) => {
+                      return ["og:image", "twitter:image"].includes(attributes.find(a => a.name === 'property')?.value);
+                    },
+                  },
+                ],
+              },
               esModule: false
             }
           }
