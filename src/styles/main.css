@@ -372,7 +372,7 @@ input[type="number"] {
     border-radius: 5px;
     border: 1px solid var(--control-border);
 }
-input[type="number"]:hover {
+input[type="number"]:not(:disabled):hover {
     border-color: #28664c;
 }
 input[type="color"] {
