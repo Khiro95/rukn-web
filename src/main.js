@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         if (ctx.board.image?.length > 4.5 * 1024 * 1024) {
             if (!confirm(L11n.getString(L11n.Keys.Error_CannotPreserveImage))) {
                 langSelect.value = L11n.currentLocale;
-                langSelect.dispatchEvent('change');
+                langSelect.dispatchEvent(new Event('change'));
                 return;
             }
             ctx.board.image = null;
