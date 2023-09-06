@@ -74,10 +74,10 @@ module.exports = {
         }
       },
       {
-        test: /\.svg$/i,
+        test: /\.(svg|webp)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/[name].svg'
+          filename: 'assets/[name][ext]'
         }
       },
       {
