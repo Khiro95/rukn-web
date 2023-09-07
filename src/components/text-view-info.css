@@ -22,8 +22,8 @@
     display: none;
 }
 :host([checked]) {
-    color: #28664c;
-    border-color: #28664c;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
     font-weight: 600;
 }
 :host([checked]) .tv-content {
@@ -54,7 +54,7 @@
     visibility: hidden;
 }
 .tv-checkmark.disabled {
-    color: #b8ccc2;
+    color: var(--color-accent-light);
 }
 .tv-content {
     grid-area: content;
@@ -70,7 +70,7 @@
 }
 .tv-icon {
     grid-area: icon;
-    color: #b8ccc2;
+    color: var(--color-accent-light);
     margin-inline: 8px 16px;
 }
 .tv-size-w {
