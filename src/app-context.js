@@ -254,6 +254,29 @@ class AppContext {
         }
     }
 
+    toggleItemVisibility(item, isVisible = true) {
+        if (item instanceof ItemContext && this.items.includes(item)) {
+            if (isVisible) {
+                this.board.element.appendChild(item.element);
+            }
+            else {
+                try {
+                    if (this.selectedItem === item) {
+                        this.selectedItem = null;
+                    }
+                    this.board.element.removeChild(item.element);
+                }
+                catch (error) {
+                    // If the item wasn't a child, then an error will be thrown
+                }
+            }
+            if (!item.isReference && item.reference.mode === 'Isolated') {
+                item.reference.mode = 'None';
+                item.updateText();
+            }
+        }
+    }
+
     dumpContext() {
         return {
             selector: {

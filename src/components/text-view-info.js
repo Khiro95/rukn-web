@@ -23,23 +23,12 @@ class TextViewInfo extends HTMLElement {
     set checked(value) {
         if (value === true) {
             this.setAttribute('checked', '');
-            appContext.board.element.appendChild(this.sourceItem.element);
+            appContext.toggleItemVisibility(this.sourceItem, true);
             this.updateInfos(this.sourceItem.rect);
         }
         else {
             this.removeAttribute('checked');
-            try {
-                appContext.board.element.removeChild(this.sourceItem.element);
-                if (this.sourceItem.element.selected) {
-                    appContext.selectedItem = null;
-                }
-                if (!this.sourceItem.isReference) {
-                    this.sourceItem.reference.mode = 'None';
-                }
-            }
-            catch (error) {
-                // if the element hadn't been added before then we can't remove it :)
-            }
+            appContext.toggleItemVisibility(this.sourceItem, false);
         }
     }
 
