@@ -10,7 +10,7 @@ Altought the web app can be used on any platform, there is also a WPF version of
 
 ## Build
 
-Requires Node.js v14.15 and above.
+Requires [Node.js](https://nodejs.org/) v14.15 and above.
 
 ## How to use
 
