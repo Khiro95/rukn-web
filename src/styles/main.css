@@ -51,6 +51,7 @@
 
     --textbox-border: var(--control-border);
     --textbox-hover-border: var(--color-accent);
+    --textbox-disabled-foreground: var(--color-text-disabled);
 
     --colorpicker-border: var(--control-border);
     --colorpicker-background: var(--control-background);
@@ -407,6 +408,9 @@ input[type="number"] {
     border-radius: 5px;
     border: 1px solid var(--textbox-border);
 }
+input[type="number"]:disabled {
+    color: var(--textbox-disabled-foreground);
+}
 input[type="number"]:not(:disabled):hover {
     border-color: var(--textbox-hover-border);
 }
@@ -549,6 +553,9 @@ html[dir="rtl"] .switch input[type="checkbox"]::before {
     flex-grow: 1;
     height: 1px;
     background-color: var(--control-border);
+}
+#ref-mode-select, .customSelect[data-sid=ref-mode-select] {
+    width: 150px;
 }
 #image-thumbnail {
     display: block;
