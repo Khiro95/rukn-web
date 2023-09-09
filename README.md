@@ -57,5 +57,5 @@ Requires [Node.js](https://nodejs.org/) v14.15 and above.
 ## Credit
 
 - [King Fahd Glorious Qur'an Printing Complex (KFGQPC)](https://qurancomplex.gov.sa/): for providing the Uthmanic Hafs font alongside the compatible Quran text.
-- [Tanzil](https://tanzil.net/): for providing the Quran metadata and English translation.
+- [The Noble Qur'an Encyclopedia](https://quranenc.com/): for providing the English translation.
 - [Kaleam](https://www.kaleam.com/): for the help with Rukn logo (the Arabic word).
