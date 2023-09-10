@@ -1,3 +1,7 @@
+<div align="center">
+    <img alt="logo" src="images/logo.png" height="64"/>
+</div>
+
 English version is available [here](README.md)
 
 ## تطبيق رُكن
@@ -48,6 +52,15 @@ English version is available [here](README.md)
 - يمكن الضغط على **نسخ** من أجل نسخ الناتج كصورة بصيغة PNG إلى الحافظة.
 
 *(**ملاحظة:** متصفح Firefox لا يدعم نسخ البيانات إلى الحافظة)*
+
+## عينات
+
+الصور التالية هي مثال على عمل تم بواسطة التطبيق:
+
+![Sample1](images/sample1.png)
+![Sample2](images/sample2.png)
+![Sample3](images/sample3.png)
+![Sample4](images/sample4.png)
 
 ## ملاحظات
 

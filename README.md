@@ -1,3 +1,7 @@
+<div align="center">
+    <img alt="logo" src="images/logo.png" height="64"/>
+</div>
+
 النسخة العربية متوفرة [هنا](README.ar.md)
 
 # Rukn App
@@ -48,6 +52,15 @@ Requires [Node.js](https://nodejs.org/) v14.15 and above.
 - You can click on **Copy** to copy the result, as a PNG image, to the clipboard.
 
     *(**Note:** Firefox doesn't support copying data to the clipboard)*
+
+## Samples
+
+The following images are examples of work done using the app:
+
+![Sample1](images/sample1.png)
+![Sample2](images/sample2.png)
+![Sample3](images/sample3.png)
+![Sample4](images/sample4.png)
 
 ## Notes
 
