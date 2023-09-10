@@ -318,6 +318,25 @@ header > *, .decor-wrapper * {
 }
 body > footer {
     grid-area: footer;
+    background-color: var(--control-background);
+    border: 1px solid var(--control-border);
+    color: var(--color-text-secondary);
+    padding: 2px 0;
+}
+body > footer > div {
+    display: flex;
+    margin: 0 auto;
+    max-width: 320px;
+    align-items: center;
+}
+body > footer a {
+    display: flex;
+}
+body > footer > div > span {
+    flex: 1;
+}
+html[dir=rtl] body > footer > div > span {
+    text-align: right;
 }
 svg-icon {
     display: inline-flex;
@@ -740,5 +759,8 @@ input[type="checkbox"]:checked::before {
     }
     .bottom-section {
         padding: 8px;
+    }
+    body > footer {
+        display: none;
     }
 }

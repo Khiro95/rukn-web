@@ -22,6 +22,7 @@ locMap.set('en', {
     Close: 'Close',
     Layers: 'Layers',
     Loading: 'Loading',
+    Source: 'Source',
     AppDescription: 'An easy tool to create images that contain quranic ayah (or ayat) and/or English translation as well.',
     AppKeywords: 'Rukn,Quran,Images,Background,Translation',
 
@@ -37,6 +38,7 @@ locMap.set('ar', {
     Close: 'إغلاق',
     Layers: 'طبقات',
     Loading: 'تحميل',
+    Source: 'مصدر',
     AppDescription: 'أداة سهلة لانشاء صور تحتوي على آية (أو آيات) قرآنية و/أو ترجمة انجليزية كذلك.',
     AppKeywords: 'ركن,قرآن,صور,خلفية,ترجمة',
 
