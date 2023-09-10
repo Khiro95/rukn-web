@@ -5,8 +5,10 @@ on:
       - preview
     paths-ignore:
       - '.vscode/**'
+      - 'images/**'
       - '.gitignore'
       - 'README*.md'
+      - 'LICENSE'
 jobs:
   build_and_preview:
     runs-on: ubuntu-latest
