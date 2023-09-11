@@ -8,7 +8,7 @@ on:
       - 'images/**'
       - '.gitignore'
       - 'README*.md'
-      - 'LICENSE'
+      - 'LICENSE*'
 jobs:
   build_and_preview:
     runs-on: ubuntu-latest
