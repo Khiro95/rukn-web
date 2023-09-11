@@ -13,6 +13,11 @@ import Quran from "./data/quran_hafs_and_english.xml";
 const appContext = AppContext.default;
 
 document.addEventListener("DOMContentLoaded", async function() {
+    const year = new Date().getFullYear();
+    if (year > 2023) {
+        document.getElementById('copyright-year').innerText += '-' + year;
+    }
+
     const langSelect = document.getElementById('lang-select');
     langSelect.value = L11n.currentLocale;
     langSelect.addEventListener('change', e => {

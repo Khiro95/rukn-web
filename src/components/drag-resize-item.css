@@ -11,7 +11,7 @@
     grid-template-areas: 'cell';
     grid-template-columns: 100%;
     grid-template-rows: 100%;
-    cursor: all-scroll;
+    cursor: move;
 }
 :host(:focus) {
     outline: none;

@@ -74,10 +74,10 @@ module.exports = {
         }
       },
       {
-        test: /\.svg$/i,
+        test: /\.(svg|webp)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/[name].svg'
+          filename: 'assets/[name][ext]'
         }
       },
       {
@@ -146,7 +146,7 @@ module.exports = {
                     attribute: "content",
                     type: "src",
                     filter: (tag, attribute, attributes, resourcePath) => {
-                      return ["og:image", "twitter:image"].includes(attributes.find(a => a.name === 'property')?.value);
+                      return ["og:image", "twitter:image"].includes(attributes.find(a => ['property', 'name'].includes(a.name))?.value);
                     },
                   },
                 ],

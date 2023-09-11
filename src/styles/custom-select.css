@@ -12,8 +12,8 @@
 }
 .custom-select-opener {
   border-radius: 5px;
-  border: var(--combobox-border-width) solid var(--control-border);
-  background-color: var(--control-background);
+  border: var(--combobox-border-width) solid var(--combobox-border);
+  background-color: var(--combobox-background);
   padding: 3px 11px;
   display: flex;
   gap: 11px;
@@ -33,7 +33,7 @@
   clip-path: polygon(46.4644661% 64.7487375%, 50% 68.284271%, 78.284271% 40%, 71.2132035% 32.9289322%, 50% 54.1421355%, 28.78679655% 32.9289322%, 21.71572875% 40%);
 }
 .custom-select-container:is(:hover, .is-open) .custom-select-opener {
-  background-color: white;
+  background-color: var(--combobox-active-background);
 }
 .custom-select-container select {
   visibility: hidden;
@@ -56,7 +56,7 @@
   max-height: 0;
   top: -200vh;
   transition: max-height .2s linear;
-  background-color: white;
+  background-color: var(--combobox-active-background);
   position: absolute;
   visibility: hidden;
   margin-block: 4px;
@@ -65,7 +65,7 @@
   width: max-content;
   min-width: 100%;
   border-radius: 5px;
-  border: var(--combobox-border-width) solid var(--control-border);
+  border: var(--combobox-border-width) solid var(--combobox-border);
   box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
   box-sizing: content-box;
   overflow-y: hidden;
@@ -91,11 +91,11 @@
   border-radius: 5px;
 }
 .custom-select-option.has-focus {
-  background-color: #28664c;
-  color: white;
+  background-color: var(--combobox-item-focused-background);
+  color: var(--combobox-item-focused-foreground);
 }
 .custom-select-option.is-disabled {
-  color: var(--color-text-disabled);
+  color: var(--combobox-item-disabled-foreground);
   pointer-events: none;
 }
 /* .custom-select-option.is-selected::before {
